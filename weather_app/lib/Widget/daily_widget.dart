@@ -24,7 +24,8 @@ class DailyWeather extends StatelessWidget {
         child: Container(
             padding: EdgeInsets.all(30),
             decoration: const BoxDecoration(
-                color: Color.fromARGB(100, 223, 222, 226),
+                color: Color.fromARGB(
+                    255, 202, 196, 206), //Color.fromARGB(100, 223, 222, 226),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Column(
               children: setElement(),
@@ -69,7 +70,8 @@ class ListElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+    var textStyle = TextStyle(
+        color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
     return Container(
       padding: EdgeInsets.only(bottom: 5),
       child: Row(

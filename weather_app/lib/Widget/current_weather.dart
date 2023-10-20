@@ -21,7 +21,7 @@ class CurrentWeather extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(30),
           decoration: const BoxDecoration(
-              color: Color.fromARGB(100, 223, 222, 226),
+              color: Color.fromARGB(255, 202, 196, 206),
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Column(
             children: [
@@ -33,10 +33,14 @@ class CurrentWeather extends StatelessWidget {
                       Text(
                           widget.data?.current.temperature_2m.toString() ?? '-',
                           style: const TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.w700)),
+                              color: Colors.white,
+                              fontSize: 50,
+                              fontWeight: FontWeight.w700)),
                       Text('C°',
                           style: TextStyle(
-                              fontSize: 50, fontWeight: FontWeight.w700)),
+                              color: Colors.white,
+                              fontSize: 50,
+                              fontWeight: FontWeight.w700)),
                     ],
                   ),
                   WeatherCodeIcon(
@@ -47,13 +51,17 @@ class CurrentWeather extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text("Temperatura percepita  ",
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500)),
                   Text(
                       widget.data?.current.apparent_temperature.toString() ??
                           '0',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
+                      style: TextStyle(
+                          color: Colors.white,
+                          fontSize: 20,
+                          fontWeight: FontWeight.w500)),
                 ],
               ),
               Row(

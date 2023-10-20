@@ -33,20 +33,23 @@ class _MainScreenState extends State<MainScreen> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: <Widget>[
-            CurrentWeather(widget: widget),
-            const Center(
-              child: Text("Hourly Weather"),
-            ),
-            HourlyWeather(
-              widget: widget,
-            ),
-            DailyWeather(
-              widget: widget,
-            ),
-          ],
+        child: Container(
+          color: Color.fromARGB(105, 145, 139, 132),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.start,
+            children: <Widget>[
+              CurrentWeather(widget: widget),
+              const Center(
+                child: Text("Hourly Weather"),
+              ),
+              HourlyWeather(
+                widget: widget,
+              ),
+              DailyWeather(
+                widget: widget,
+              ),
+            ],
+          ),
         ),
       ),
     );

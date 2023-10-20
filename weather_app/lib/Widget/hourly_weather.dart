@@ -21,7 +21,7 @@ class HourlyWeather extends StatelessWidget {
       child: ListView.separated(
           scrollDirection: Axis.horizontal,
           padding: const EdgeInsets.all(12),
-          itemCount: widget.data?.hourly.time.length ?? 24,
+          itemCount: 24,
           separatorBuilder: (context, index) {
             return SizedBox(width: 12);
           },
@@ -32,8 +32,10 @@ class HourlyWeather extends StatelessWidget {
             var weathercode = widget.data?.hourly.weathercode[index];
             var relativehumidity_2m =
                 widget.data?.hourly.relativehumidity_2m[index].toString();
-            var textStyle =
-                TextStyle(fontSize: 18, fontWeight: FontWeight.w500);
+            var textStyle = TextStyle(
+                color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
+            var textStyleBlack = TextStyle(
+                color: Colors.black, fontSize: 18, fontWeight: FontWeight.w500);
             return Material(
               elevation: 10,
               borderRadius: BorderRadius.all(Radius.circular(20)),
@@ -42,7 +44,8 @@ class HourlyWeather extends StatelessWidget {
                 height: 140,
                 padding: const EdgeInsets.all(10.0),
                 decoration: const BoxDecoration(
-                    color: Color.fromARGB(100, 223, 222, 226),
+                    color: Color.fromARGB(255, 202, 196,
+                        206), //Color.fromARGB(100, 223, 222, 226),
                     borderRadius: BorderRadius.all(Radius.circular(20))),
                 child: Center(
                     child: Column(
@@ -60,8 +63,9 @@ class HourlyWeather extends StatelessWidget {
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
                       children: [
-                        Text(relativehumidity_2m ?? '--', style: textStyle),
-                        Text('%', style: textStyle),
+                        Text(relativehumidity_2m ?? '--',
+                            style: textStyleBlack),
+                        Text('%', style: textStyleBlack),
                         SvgPicture.asset(
                           'assets/images/icon/water-precipitation-weather.svg',
                         ),
