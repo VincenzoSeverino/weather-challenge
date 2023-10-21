@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/Screen/main_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/Widget/daily_widget_element.dart';
 import 'package:weather_app/Widget/weather_code_icon.dart';
 
 class DailyWeather extends StatelessWidget {
@@ -42,7 +43,7 @@ class DailyWeather extends StatelessWidget {
       var temperature_2m_min =
           widget.data?.daily.temperature_2m_min[index].toString();
 
-      return ListElement(
+      return DailyWidgetElement(
           time: time,
           weathercode: weathercode,
           temperature_2m_max: temperature_2m_max,
@@ -50,42 +51,5 @@ class DailyWeather extends StatelessWidget {
     });
 
     return list;
-  }
-}
-
-class ListElement extends StatelessWidget {
-  const ListElement({
-    super.key,
-    required this.time,
-    required this.weathercode,
-    required this.temperature_2m_max,
-    required this.temperature_2m_min,
-  });
-
-  final String time;
-  final num? weathercode;
-  final String? temperature_2m_max;
-  final String? temperature_2m_min;
-
-  @override
-  Widget build(BuildContext context) {
-    var textStyle = TextStyle(
-        color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
-    return Container(
-      padding: EdgeInsets.only(bottom: 5),
-      child: Row(
-        crossAxisAlignment: CrossAxisAlignment.center,
-        mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: [
-          SizedBox(
-            child: Text(time, style: textStyle),
-            width: 40,
-          ),
-          WeatherCodeIcon(weathercode: weathercode!.toInt()),
-          Text("$temperature_2m_max C° - $temperature_2m_min C°",
-              style: textStyle),
-        ],
-      ),
-    );
   }
 }
