@@ -31,7 +31,7 @@ class WeatherAPI {
         daily: Daily.fromJson(convert.jsonDecode(data)),
       );
     } else {
-      print(response.statusCode);
+      log(response.statusCode.toString());
       throw Exception("no data");
     }
   }

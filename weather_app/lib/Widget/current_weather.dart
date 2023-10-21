@@ -21,7 +21,7 @@ class CurrentWeather extends StatelessWidget {
         child: Container(
           padding: EdgeInsets.all(30),
           decoration: const BoxDecoration(
-              color: Color.fromARGB(255, 202, 196, 206),
+              color: Color.fromARGB(220, 71, 108, 155),
               borderRadius: BorderRadius.all(Radius.circular(20))),
           child: Column(
             children: [
@@ -31,13 +31,10 @@ class CurrentWeather extends StatelessWidget {
                   Row(
                     children: [
                       Text(
-                          widget.data?.current.temperature_2m.toString() ?? '-',
+                          widget.data!.current.temperature_2m.toString() +
+                                  ' C°' ??
+                              '-',
                           style: const TextStyle(
-                              color: Colors.white,
-                              fontSize: 50,
-                              fontWeight: FontWeight.w700)),
-                      Text('C°',
-                          style: TextStyle(
                               color: Colors.white,
                               fontSize: 50,
                               fontWeight: FontWeight.w700)),
@@ -68,11 +65,9 @@ class CurrentWeather extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Text(
-                      widget.data?.current.relativehumidity_2m.toString() ??
+                      widget.data!.current.relativehumidity_2m.toString() +
+                              "%" ??
                           '-',
-                      style:
-                          TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
-                  Text("%",
                       style:
                           TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
                   SvgPicture.asset(

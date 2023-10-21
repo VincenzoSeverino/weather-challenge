@@ -44,7 +44,6 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   void initState() {
-    // TODO: implement initState
     featureWeatherData = WeatherAPI().getFetch();
     super.initState();
   }
@@ -53,11 +52,12 @@ class _MyHomePageState extends State<MyHomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        backgroundColor: Color.fromARGB(
-            255, 202, 196, 206), //Theme.of(context).colorScheme.primary,
+        backgroundColor: const Color.fromARGB(
+            255, 173, 217, 244), //Theme.of(context).colorScheme.primary,
         title: Text(
           widget.title,
-          style: TextStyle(color: Colors.white, fontWeight: FontWeight.w800),
+          style:
+              const TextStyle(color: Colors.black, fontWeight: FontWeight.w800),
         ),
       ),
       body: Center(

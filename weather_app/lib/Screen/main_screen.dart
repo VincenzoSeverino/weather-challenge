@@ -34,7 +34,7 @@ class _MainScreenState extends State<MainScreen> {
     return SafeArea(
       child: SingleChildScrollView(
         child: Container(
-          color: Color.fromARGB(105, 145, 139, 132),
+          color: Color.fromARGB(255, 173, 217, 244),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.start,
             children: <Widget>[

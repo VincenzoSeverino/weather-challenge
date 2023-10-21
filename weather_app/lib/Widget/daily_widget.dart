@@ -24,8 +24,7 @@ class DailyWeather extends StatelessWidget {
         child: Container(
             padding: EdgeInsets.all(30),
             decoration: const BoxDecoration(
-                color: Color.fromARGB(
-                    255, 202, 196, 206), //Color.fromARGB(100, 223, 222, 226),
+                color: Color.fromARGB(200, 71, 108, 155),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
             child: Column(
               children: setElement(),
