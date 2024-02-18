@@ -1,14 +1,7 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'dart:convert' as convert;
 
-import 'package:http/http.dart' as http;
-import 'package:weather_app/Model/weather_data.dart';
-import 'package:weather_app/Screen/main_screen.dart';
 import 'package:weather_app/Utils/color_scheme.dart';
-import 'package:weather_app/Utils/weather_api.dart';
 import 'package:weather_app/Screen/my_home_page.dart';
 
 void main() {

@@ -1,14 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:weather_app/Model/daily.dart';
-import 'package:weather_app/Model/weather_data.dart';
 import 'package:weather_app/Providers/weather_provider.dart';
-import 'package:weather_app/Screen/main_screen.dart';
 import 'package:intl/intl.dart';
-import 'package:weather_app/Utils/weather_api.dart';
 import 'package:weather_app/Widget/daily_widget_element.dart';
-import 'package:weather_app/Widget/weather_code_icon.dart';
 
 class DailyWeather extends ConsumerWidget {
   DailyWeather({
@@ -28,15 +23,15 @@ class DailyWeather extends ConsumerWidget {
   Container dailyColumn(Daily dailyData) {
     return Container(
       height: 400,
-      margin: EdgeInsets.all(20),
+      margin: const EdgeInsets.all(20),
       child: Card(
         clipBehavior: Clip.hardEdge,
         color: Colors.transparent,
         elevation: 10,
-        shape: RoundedRectangleBorder(
+        shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Container(
-            padding: EdgeInsets.all(30),
+            padding: const EdgeInsets.all(30),
             decoration: const BoxDecoration(
                 color: Color.fromARGB(20, 71, 108, 155),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -53,8 +48,8 @@ class DailyWeather extends ConsumerWidget {
       return DailyWidgetElement(
           time: formatter.format(daily.time[index]!),
           weathercode: daily.weathercode[index],
-          temperature_2m_max: daily.temperature_2m_max[index].toString(),
-          temperature_2m_min: daily.temperature_2m_min[index].toString());
+          temperature2mMax: daily.temperature2mMax[index].toString(),
+          temperature2mMin: daily.temperature2mMin[index].toString());
     });
 
     return list;

@@ -10,7 +10,7 @@ import 'package:geolocator/geolocator.dart';
 class WeatherAPI {
   Future<WeatherData> getFetch() async {
     Position position = await _determinePosition();
-    log(position.latitude.toString() + " " + position.longitude.toString());
+    log("${position.latitude} ${position.longitude}");
     var latitude = position.latitude ?? 41.9;
     var longitude = position.longitude ?? 12.49;
 

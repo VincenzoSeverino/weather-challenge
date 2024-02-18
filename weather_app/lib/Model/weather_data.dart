@@ -1,9 +1,3 @@
-import 'dart:convert' as convert;
-import 'dart:ffi';
-
-import 'package:http/http.dart' as http;
-
-import 'package:flutter/material.dart';
 import 'package:weather_app/Model/current.dart';
 import 'package:weather_app/Model/daily.dart';
 import 'package:weather_app/Model/hourly.dart';

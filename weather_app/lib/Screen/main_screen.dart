@@ -1,25 +1,18 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_animation/weather_animation.dart';
-import 'package:weather_app/Model/weather_data.dart';
 
-import 'dart:convert' as convert;
-
-import 'package:http/http.dart' as http;
 import 'package:weather_app/Providers/weather_provider.dart';
-import 'package:weather_app/Utils/weather_api.dart';
 import 'package:weather_app/Widget/current_weather.dart';
 import 'package:weather_app/Widget/hourly_weather.dart';
-import 'package:weather_app/Widget/daily_widget.dart';
 
 class MainScreen extends StatefulWidget {
   @override
-  MainScreen({
+  const MainScreen({
     super.key,
   });
 
+  @override
   State<MainScreen> createState() => _MainScreenState();
 }
 
@@ -50,12 +43,12 @@ class _MainScreenState extends State<MainScreen> {
           SafeArea(
             child: SingleChildScrollView(
               child: Container(
-                color: Color.fromARGB(0, 173, 217, 244),
-                child: Column(
+                color: const Color.fromARGB(0, 173, 217, 244),
+                child: const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    const SizedBox(height: 220, child: CurrentWeather()),
-                    const Center(
+                    SizedBox(height: 220, child: CurrentWeather()),
+                    Center(
                       child: Text("Hourly Weather"),
                     ),
                     SizedBox(

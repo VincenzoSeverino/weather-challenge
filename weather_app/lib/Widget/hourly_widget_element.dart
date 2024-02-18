@@ -25,7 +25,7 @@ class HourlyWidgetElement extends StatelessWidget {
     return Card(
       color: Colors.transparent,
       elevation: 10,
-      shape: RoundedRectangleBorder(
+      shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.all(Radius.circular(20))),
       //borderRadius: BorderRadius.all(Radius.circular(20)),
       child: Container(
@@ -41,11 +41,11 @@ class HourlyWidgetElement extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.spaceAround,
           children: [
             Text(time ?? '--', style: textStyle),
-            WeatherCodeIcon(weathercode: weathercode!.toInt() ?? 0),
+            WeatherCodeIcon(weathercode: weathercode!.toInt()),
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(temperature_2m ?? '--' + ' C°', style: textStyle),
+                Text(temperature_2m ?? '--' ' C°', style: textStyle),
               ],
             ),
             Row(

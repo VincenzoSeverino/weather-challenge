@@ -1,14 +1,9 @@
-import 'dart:developer';
-
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:weather_app/Model/current.dart';
-import 'package:weather_app/Model/weather_data.dart';
 
 import 'package:weather_app/Providers/weather_provider.dart';
-import 'package:weather_app/Screen/main_screen.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:weather_app/Utils/weather_api.dart';
 import 'package:weather_app/Widget/weather_code_icon.dart';
 
 class CurrentWeather extends StatelessWidget {
@@ -27,7 +22,7 @@ class CurrentWeather extends StatelessWidget {
         shape: const RoundedRectangleBorder(
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Container(
-          padding: EdgeInsets.all(30),
+          padding: const EdgeInsets.all(30),
           decoration: const BoxDecoration(
               color: Color.fromARGB(120, 71, 108, 155),
               borderRadius: BorderRadius.all(Radius.circular(20))),
@@ -52,7 +47,7 @@ class CurrentWeather extends StatelessWidget {
           children: [
             Row(
               children: [
-                Text('${currentData.temperature_2m} C°' ?? '-',
+                Text('${currentData.temperature2m} C°',
                     style: const TextStyle(
                         color: Colors.white,
                         fontSize: 50,
@@ -70,7 +65,7 @@ class CurrentWeather extends StatelessWidget {
                     color: Colors.white,
                     fontSize: 20,
                     fontWeight: FontWeight.w500)),
-            Text(currentData.apparent_temperature.toString() ?? '0',
+            Text(currentData.apparentTemperature.toString(),
                 style: const TextStyle(
                     color: Colors.white,
                     fontSize: 20,
@@ -80,7 +75,7 @@ class CurrentWeather extends StatelessWidget {
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            Text(currentData.relativehumidity_2m.toString() + "%" ?? '-',
+            Text("${currentData.relativehumidity2m} %",
                 style:
                     const TextStyle(fontSize: 20, fontWeight: FontWeight.w500)),
             SvgPicture.asset(

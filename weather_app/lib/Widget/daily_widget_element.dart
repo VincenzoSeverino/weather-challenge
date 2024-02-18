@@ -6,33 +6,32 @@ class DailyWidgetElement extends StatelessWidget {
     super.key,
     required this.time,
     required this.weathercode,
-    required this.temperature_2m_max,
-    required this.temperature_2m_min,
+    required this.temperature2mMax,
+    required this.temperature2mMin,
   });
 
   final String time;
   final num? weathercode;
-  final String? temperature_2m_max;
-  final String? temperature_2m_min;
+  final String temperature2mMax;
+  final String temperature2mMin;
 
   @override
   Widget build(BuildContext context) {
-    var textStyle = TextStyle(
+    var textStyle = const TextStyle(
         color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
     return Container(
       height: 20,
-      padding: EdgeInsets.only(bottom: 5),
+      padding: const EdgeInsets.only(bottom: 5),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
           SizedBox(
-            child: Text(time, style: textStyle),
             width: 40,
+            child: Text(time, style: textStyle),
           ),
-          WeatherCodeIcon(weathercode: weathercode!.toInt()),
-          Text("$temperature_2m_max C° - $temperature_2m_min C°",
-              style: textStyle),
+          WeatherCodeIcon(weathercode: weathercode?.toInt() ?? 0),
+          Text("$temperature2mMax C° - $temperature2mMin C°", style: textStyle),
         ],
       ),
     );
