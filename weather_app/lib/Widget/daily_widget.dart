@@ -22,25 +22,48 @@ class DailyWeather extends ConsumerWidget {
 
   Container dailyColumn(Daily dailyData) {
     return Container(
-      height: 400,
+      height: 350,
       margin: const EdgeInsets.all(20),
       child: Card(
         clipBehavior: Clip.hardEdge,
         color: Colors.transparent,
         elevation: 10,
-        shape: const RoundedRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(20))),
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(20),
+        ),
         child: Container(
-            padding: const EdgeInsets.all(30),
-            decoration: const BoxDecoration(
-                color: Color.fromARGB(20, 71, 108, 155),
-                borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: CustomScrollView(
-              shrinkWrap: true,
-              slivers: setListElement(dailyData),
-            )),
+          decoration: const BoxDecoration(
+              color: Color.fromARGB(20, 71, 108, 155),
+              borderRadius: BorderRadius.all(Radius.circular(20))),
+          padding: const EdgeInsets.all(30),
+          child: Center(
+            child: Column(
+              children: setListElement(dailyData),
+            ),
+          ),
+        ),
       ),
     );
+    //  Container(
+    //   height: 400,
+    //   margin: const EdgeInsets.all(20),
+    //   child: Card(
+    //     clipBehavior: Clip.hardEdge,
+    //     color: Colors.transparent,
+    //     elevation: 10,
+    //     shape: const RoundedRectangleBorder(
+    //         borderRadius: BorderRadius.all(Radius.circular(20))),
+    //     child: Container(
+    //         padding: const EdgeInsets.all(30),
+    //         decoration: const BoxDecoration(
+    //             color: Color.fromARGB(20, 71, 108, 155),
+    //             borderRadius: BorderRadius.all(Radius.circular(20))),
+    //         child: CustomScrollView(
+    //           shrinkWrap: true,
+    //           slivers: setListElement(dailyData),
+    //         )),
+    //   ),
+    // );
   }
 
   List<Widget> setListElement(Daily daily) {

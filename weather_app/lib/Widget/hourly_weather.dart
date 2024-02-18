@@ -46,28 +46,26 @@ class HourlyWeatherState extends ConsumerState<HourlyWeather> {
         orElse: () => const SizedBox.shrink());
   }
 
-  Expanded hourlyElementsRow(Hourly hourlyData) {
-    return Expanded(
-      child: Container(
-        color: Colors.transparent,
-        height: 210,
-        child: ScrollablePositionedList.separated(
-            itemScrollController: _ctr,
-            scrollDirection: Axis.horizontal,
-            padding: const EdgeInsets.all(12),
-            itemCount: 24,
-            separatorBuilder: (context, index) {
-              return const SizedBox(width: 12);
-            },
-            itemBuilder: (context, index) {
-              return HourlyWidgetElement(
-                  time: formatter.format(hourlyData.time[index]!),
-                  weathercode: hourlyData.weathercode[index]!,
-                  temperature_2m: hourlyData.temperature2m[index].toString(),
-                  relativehumidity_2m:
-                      hourlyData.relativehumidity2m[index].toString());
-            }),
-      ),
+  Widget hourlyElementsRow(Hourly hourlyData) {
+    return Container(
+      color: Colors.transparent,
+      height: 210,
+      child: ScrollablePositionedList.separated(
+          itemScrollController: _ctr,
+          scrollDirection: Axis.horizontal,
+          padding: const EdgeInsets.all(12),
+          itemCount: 24,
+          separatorBuilder: (context, index) {
+            return const SizedBox(width: 12);
+          },
+          itemBuilder: (context, index) {
+            return HourlyWidgetElement(
+                time: formatter.format(hourlyData.time[index]!),
+                weathercode: hourlyData.weathercode[index]!,
+                temperature_2m: hourlyData.temperature2m[index].toString(),
+                relativehumidity_2m:
+                    hourlyData.relativehumidity2m[index].toString());
+          }),
     );
   }
 }

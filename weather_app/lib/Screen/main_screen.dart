@@ -4,6 +4,7 @@ import 'package:weather_animation/weather_animation.dart';
 
 import 'package:weather_app/Providers/weather_provider.dart';
 import 'package:weather_app/Widget/current_weather.dart';
+import 'package:weather_app/Widget/daily_widget.dart';
 import 'package:weather_app/Widget/hourly_weather.dart';
 
 class MainScreen extends StatefulWidget {
@@ -44,18 +45,18 @@ class _MainScreenState extends State<MainScreen> {
             child: SingleChildScrollView(
               child: Container(
                 color: const Color.fromARGB(0, 173, 217, 244),
-                child: const Column(
+                child: Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: <Widget>[
-                    SizedBox(height: 220, child: CurrentWeather()),
-                    Center(
+                    const SizedBox(height: 220, child: CurrentWeather()),
+                    const Center(
                       child: Text("Hourly Weather"),
                     ),
-                    SizedBox(
+                    const SizedBox(
                       height: 200,
                       child: HourlyWeather(),
                     ),
-                    // Expanded(child: DailyWeather()),
+                    DailyWeather(),
                   ],
                 ),
               ),
