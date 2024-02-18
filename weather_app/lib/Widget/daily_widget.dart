@@ -1,53 +1,60 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:weather_app/Model/daily.dart';
+import 'package:weather_app/Model/weather_data.dart';
+import 'package:weather_app/Providers/weather_provider.dart';
 import 'package:weather_app/Screen/main_screen.dart';
 import 'package:intl/intl.dart';
+import 'package:weather_app/Utils/weather_api.dart';
 import 'package:weather_app/Widget/daily_widget_element.dart';
 import 'package:weather_app/Widget/weather_code_icon.dart';
 
-class DailyWeather extends StatelessWidget {
+class DailyWeather extends ConsumerWidget {
   DailyWeather({
     super.key,
-    required this.widget,
   });
-
-  final MainScreen widget;
 
   final formatter = DateFormat.E();
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final weatherData = ref.watch(weatherDataProvider);
+    return weatherData.maybeWhen(
+        data: (data) => dailyColumn(data.daily),
+        orElse: () => const SizedBox.shrink());
+  }
+
+  Container dailyColumn(Daily dailyData) {
     return Container(
+      height: 400,
       margin: EdgeInsets.all(20),
-      child: Material(
+      child: Card(
+        clipBehavior: Clip.hardEdge,
+        color: Colors.transparent,
         elevation: 10,
-        borderRadius: BorderRadius.all(Radius.circular(20)),
+        shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Container(
             padding: EdgeInsets.all(30),
             decoration: const BoxDecoration(
-                color: Color.fromARGB(200, 71, 108, 155),
+                color: Color.fromARGB(20, 71, 108, 155),
                 borderRadius: BorderRadius.all(Radius.circular(20))),
-            child: Column(
-              children: setElement(),
+            child: CustomScrollView(
+              shrinkWrap: true,
+              slivers: setListElement(dailyData),
             )),
       ),
     );
   }
 
-  List<Widget> setElement() {
-    List<Widget> list = List.generate(widget.data!.daily.time.length, (index) {
-      var time = formatter.format(widget.data!.daily.time[index]!);
-      var weathercode = widget.data?.daily.weathercode[index];
-      var temperature_2m_max =
-          widget.data?.daily.temperature_2m_max[index].toString();
-      var temperature_2m_min =
-          widget.data?.daily.temperature_2m_min[index].toString();
-
+  List<Widget> setListElement(Daily daily) {
+    List<Widget> list = List.generate(daily.time.length, (index) {
       return DailyWidgetElement(
-          time: time,
-          weathercode: weathercode,
-          temperature_2m_max: temperature_2m_max,
-          temperature_2m_min: temperature_2m_min);
+          time: formatter.format(daily.time[index]!),
+          weathercode: daily.weathercode[index],
+          temperature_2m_max: daily.temperature_2m_max[index].toString(),
+          temperature_2m_min: daily.temperature_2m_min[index].toString());
     });
 
     return list;

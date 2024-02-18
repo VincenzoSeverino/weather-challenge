@@ -31,6 +31,7 @@ class WeatherCodeIcon extends StatelessWidget {
       //neve
       pathIcon = 'assets/images/icon/weather-snowy-outline.svg';
     }
+
     return pathIcon;
   }
 }

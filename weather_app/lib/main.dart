@@ -1,15 +1,18 @@
 import 'dart:developer';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'dart:convert' as convert;
 
 import 'package:http/http.dart' as http;
 import 'package:weather_app/Model/weather_data.dart';
 import 'package:weather_app/Screen/main_screen.dart';
-import 'package:weather_app/weatherAPI.dart';
+import 'package:weather_app/Utils/color_scheme.dart';
+import 'package:weather_app/Utils/weather_api.dart';
+import 'package:weather_app/Screen/my_home_page.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(const ProviderScope(child: MyApp()));
 }
 
 class MyApp extends StatelessWidget {
@@ -20,61 +23,25 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Weather Demo',
+      debugShowCheckedModeBanner: false,
+      // themeMode: ThemeMode.system,
+      darkTheme: ThemeData.dark(),
       theme: ThemeData(
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 202, 196, 206)),
+              // colorScheme:
+              //     ColorScheme.fromSeed(seedColor: Color.fromARGB(255, 202, 196, 206)),
+              )
+          .copyWith(
         useMaterial3: true,
+        colorScheme: kColorScheme,
+        appBarTheme: const AppBarTheme().copyWith(
+            backgroundColor:
+                kColorScheme.onPrimaryContainer, //Colors.transparent,
+            elevation: 0.0),
+        scaffoldBackgroundColor: Colors.transparent,
+        cardTheme: const CardTheme().copyWith(),
+        textTheme: ThemeData().textTheme.copyWith(),
       ),
-      home: const MyHomePage(title: 'Current Weather'),
-    );
-  }
-}
-
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  late Future<WeatherData> featureWeatherData;
-
-  @override
-  void initState() {
-    featureWeatherData = WeatherAPI().getFetch();
-    super.initState();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        backgroundColor: const Color.fromARGB(
-            255, 173, 217, 244), //Theme.of(context).colorScheme.primary,
-        title: Text(
-          widget.title,
-          style:
-              const TextStyle(color: Colors.black, fontWeight: FontWeight.w800),
-        ),
-      ),
-      body: Center(
-        child: FutureBuilder<WeatherData>(
-          future: featureWeatherData,
-          builder: (context, snapshot) {
-            if (snapshot.connectionState == ConnectionState.done) {
-              if (snapshot.hasError) {
-                return Text('${snapshot.error}');
-              } else if (snapshot.hasData) {
-                return MainScreen(data: snapshot.data!);
-              }
-            }
-            return const CircularProgressIndicator();
-          },
-        ),
-      ),
+      home: const MyHomePage(),
     );
   }
 }

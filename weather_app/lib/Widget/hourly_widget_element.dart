@@ -11,10 +11,10 @@ class HourlyWidgetElement extends StatelessWidget {
     required this.relativehumidity_2m,
   });
 
-  final String time;
-  final num weathercode;
-  final String temperature_2m;
-  final String relativehumidity_2m;
+  final String? time;
+  final num? weathercode;
+  final String? temperature_2m;
+  final String? relativehumidity_2m;
   final TextStyle textStyle = const TextStyle(
       color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
   final TextStyle textStyleBlack = const TextStyle(
@@ -22,15 +22,19 @@ class HourlyWidgetElement extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Material(
+    return Card(
+      color: Colors.transparent,
       elevation: 10,
-      borderRadius: BorderRadius.all(Radius.circular(20)),
+      shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.all(Radius.circular(20))),
+      //borderRadius: BorderRadius.all(Radius.circular(20)),
       child: Container(
         width: 150,
         height: 140,
         padding: const EdgeInsets.all(10.0),
         decoration: const BoxDecoration(
-            color: Color.fromARGB(200, 70, 140, 152),
+            backgroundBlendMode: BlendMode.darken,
+            color: Color.fromARGB(120, 193, 194, 194),
             borderRadius: BorderRadius.all(Radius.circular(20))),
         child: Center(
             child: Column(
@@ -41,7 +45,7 @@ class HourlyWidgetElement extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                Text(temperature_2m + ' C°' ?? '--', style: textStyle),
+                Text(temperature_2m ?? '--' + ' C°', style: textStyle),
               ],
             ),
             Row(

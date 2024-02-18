@@ -20,6 +20,7 @@ class DailyWidgetElement extends StatelessWidget {
     var textStyle = TextStyle(
         color: Colors.white, fontSize: 18, fontWeight: FontWeight.w500);
     return Container(
+      height: 20,
       padding: EdgeInsets.only(bottom: 5),
       child: Row(
         crossAxisAlignment: CrossAxisAlignment.center,

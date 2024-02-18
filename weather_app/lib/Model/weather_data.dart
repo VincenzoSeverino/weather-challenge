@@ -9,13 +9,25 @@ import 'package:weather_app/Model/daily.dart';
 import 'package:weather_app/Model/hourly.dart';
 
 class WeatherData {
-  final Current current;
-  final Hourly hourly;
-  final Daily daily;
+  late final Current current;
+  late final Hourly hourly;
+  late final Daily daily;
 
-  const WeatherData({
+  WeatherData({
     required this.current,
     required this.hourly,
     required this.daily,
   });
+
+  setCurrent(Current current) {
+    this.current = current;
+  }
+
+  setHourly(Hourly hourly) {
+    this.hourly = hourly;
+  }
+
+  setDaily(Daily daily) {
+    this.daily = daily;
+  }
 }
